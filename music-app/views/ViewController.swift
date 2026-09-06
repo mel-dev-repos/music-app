@@ -11,7 +11,7 @@ var musicManager = MusicManager()
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = .systemCyan
+        
         
         searchTextField.delegate = self
         searchButton.backgroundColor = .systemPink
@@ -23,7 +23,7 @@ var musicManager = MusicManager()
         searchTextField.clipsToBounds = true
         searchTextField.placeholder = "search a good one:)"
 
-    }
+    }                                                                              
 
    
     @IBAction func searchPressed(_ sender: UIButton) {
