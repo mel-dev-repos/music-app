@@ -16,15 +16,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="enter a music name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Hdg-jh-PcR">
-                                <rect key="frame" x="35" y="87" width="322" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="enter a music name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Hdg-jh-PcR">
+                                <rect key="frame" x="10" y="42" width="373" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aFi-nw-lf9">
-                                <rect key="frame" x="290" y="140" width="76" height="35"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aFi-nw-lf9">
+                                <rect key="frame" x="20" y="86" width="353" height="35"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="search"/>
                                 <connections>
@@ -34,6 +32,16 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="QXr-Rn-H04"/>
                         <color key="backgroundColor" systemColor="secondarySystemGroupedBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Hdg-jh-PcR" firstAttribute="top" secondItem="QXr-Rn-H04" secondAttribute="top" constant="10" id="0S7-kQ-7sA"/>
+                            <constraint firstItem="Hdg-jh-PcR" firstAttribute="leading" secondItem="QXr-Rn-H04" secondAttribute="leading" constant="10" id="BLd-R0-sn4"/>
+                            <constraint firstItem="aFi-nw-lf9" firstAttribute="top" secondItem="Hdg-jh-PcR" secondAttribute="bottom" constant="20" id="Vme-ZP-UZD"/>
+                            <constraint firstItem="QXr-Rn-H04" firstAttribute="bottom" secondItem="aFi-nw-lf9" secondAttribute="bottom" constant="20" id="aL1-Kx-ulW"/>
+                            <constraint firstItem="QXr-Rn-H04" firstAttribute="trailing" secondItem="aFi-nw-lf9" secondAttribute="trailing" constant="20" id="kSp-SJ-NQW"/>
+                            <constraint firstItem="aFi-nw-lf9" firstAttribute="top" secondItem="Hdg-jh-PcR" secondAttribute="bottom" constant="10" id="mXN-qv-u3F"/>
+                            <constraint firstItem="aFi-nw-lf9" firstAttribute="leading" secondItem="QXr-Rn-H04" secondAttribute="leading" constant="20" id="rRG-fa-mhW"/>
+                            <constraint firstItem="QXr-Rn-H04" firstAttribute="trailing" secondItem="Hdg-jh-PcR" secondAttribute="trailing" constant="10" id="sTw-rI-ps4"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="searchButton" destination="aFi-nw-lf9" id="bBe-Il-Ouu"/>

@@ -23,7 +23,7 @@ var musicManager = MusicManager()
         searchTextField.clipsToBounds = true
         searchTextField.placeholder = "search a good one:)"
 
-    }
+    }                                                                              
 
    
     @IBAction func searchPressed(_ sender: UIButton) {
