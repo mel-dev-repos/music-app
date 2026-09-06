@@ -2,7 +2,7 @@ import Foundation
 
 struct MusicManager {
     let musicURL = "https://api.spotify.com/v1/search"
-    let accessToken = "BQD3J8uSii1SQM9TerH0CC-BQKZ7VQ5kt6oKVa3C_VhzJZ3oItTCR-SyjkbJcaGFxXQ_Dxk0ll6sBJd6TAH5lVw590PJczfS7Lm9KaQI8jVyme_U1hczPGahY81iAHs3lj-U0TGjiAtp"
+    let accessToken = "BQAJKCS1bVDm-dWVG6iEga7F77VDE8K0u92I8_lJ6XPAAxKMR90AwShhz1aTckwyXyfccnLo3MipC4QJp7ZM7qRM-HZgrDagTIPRE94UT3gutvjSVJiE0I4uP1PjbnB2DLJbVh6HwLh6"
 
     func fetchMusic(musicName: String) {
         let urlString = "\(musicURL)?query=\(musicName)&type=track&limit=5"
