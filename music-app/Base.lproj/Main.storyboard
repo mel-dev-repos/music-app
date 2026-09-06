@@ -16,13 +16,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="enter a music name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Hdg-jh-PcR">
-                                <rect key="frame" x="10" y="42" width="373" height="34"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Image" translatesAutoresizingMaskIntoConstraints="NO" id="hVZ-YI-AH1">
+                                <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                            </imageView>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="enter a music name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Hdg-jh-PcR">
+                                <rect key="frame" x="27" y="66" width="338" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aFi-nw-lf9">
-                                <rect key="frame" x="20" y="86" width="353" height="35"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aFi-nw-lf9">
+                                <rect key="frame" x="241" y="139" width="75.333333333333314" height="34.333333333333314"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="search"/>
                                 <connections>
@@ -30,17 +35,13 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <viewLayoutGuide key="safeArea" id="QXr-Rn-H04"/>
+                        <viewLayoutGuide key="safeArea" id="mEH-X7-xU3"/>
                         <color key="backgroundColor" systemColor="secondarySystemGroupedBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="Hdg-jh-PcR" firstAttribute="top" secondItem="QXr-Rn-H04" secondAttribute="top" constant="10" id="0S7-kQ-7sA"/>
-                            <constraint firstItem="Hdg-jh-PcR" firstAttribute="leading" secondItem="QXr-Rn-H04" secondAttribute="leading" constant="10" id="BLd-R0-sn4"/>
-                            <constraint firstItem="aFi-nw-lf9" firstAttribute="top" secondItem="Hdg-jh-PcR" secondAttribute="bottom" constant="20" id="Vme-ZP-UZD"/>
-                            <constraint firstItem="QXr-Rn-H04" firstAttribute="bottom" secondItem="aFi-nw-lf9" secondAttribute="bottom" constant="20" id="aL1-Kx-ulW"/>
-                            <constraint firstItem="QXr-Rn-H04" firstAttribute="trailing" secondItem="aFi-nw-lf9" secondAttribute="trailing" constant="20" id="kSp-SJ-NQW"/>
-                            <constraint firstItem="aFi-nw-lf9" firstAttribute="top" secondItem="Hdg-jh-PcR" secondAttribute="bottom" constant="10" id="mXN-qv-u3F"/>
-                            <constraint firstItem="aFi-nw-lf9" firstAttribute="leading" secondItem="QXr-Rn-H04" secondAttribute="leading" constant="20" id="rRG-fa-mhW"/>
-                            <constraint firstItem="QXr-Rn-H04" firstAttribute="trailing" secondItem="Hdg-jh-PcR" secondAttribute="trailing" constant="10" id="sTw-rI-ps4"/>
+                            <constraint firstAttribute="bottom" secondItem="hVZ-YI-AH1" secondAttribute="bottom" id="HJ8-WY-Jsl"/>
+                            <constraint firstAttribute="trailing" secondItem="hVZ-YI-AH1" secondAttribute="trailing" id="JnG-Uu-G89"/>
+                            <constraint firstItem="hVZ-YI-AH1" firstAttribute="top" secondItem="1OL-eI-4F5" secondAttribute="top" id="f5y-oo-Kse"/>
+                            <constraint firstItem="hVZ-YI-AH1" firstAttribute="leading" secondItem="1OL-eI-4F5" secondAttribute="leading" id="rBu-lb-Eck"/>
                         </constraints>
                     </view>
                     <connections>
@@ -50,10 +51,11 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ikn-Ny-adK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-257.25190839694653" y="-234.50704225352115"/>
+            <point key="canvasLocation" x="-257.74647887323943" y="-235.87786259541983"/>
         </scene>
     </scenes>
     <resources>
+        <image name="Image" width="390" height="844"/>
         <systemColor name="secondarySystemGroupedBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

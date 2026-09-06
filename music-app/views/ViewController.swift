@@ -11,7 +11,7 @@ var musicManager = MusicManager()
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = .systemCyan
+        
         
         searchTextField.delegate = self
         searchButton.backgroundColor = .systemPink
