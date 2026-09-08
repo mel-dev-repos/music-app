@@ -25,7 +25,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aFi-nw-lf9">
-                                <rect key="frame" x="240.99999999999997" y="139" width="75.333333333333286" height="34.333333333333343"/>
+                                <rect key="frame" x="241" y="154" width="140" height="34.333333333333343"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="search"/>
                                 <connections>
@@ -36,11 +36,11 @@
                         <viewLayoutGuide key="safeArea" id="mEH-X7-xU3"/>
                         <color key="backgroundColor" systemColor="secondarySystemGroupedBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="aFi-nw-lf9" firstAttribute="top" secondItem="Hdg-jh-PcR" secondAttribute="bottom" constant="25" id="8te-PV-zeP"/>
                             <constraint firstAttribute="bottom" secondItem="hVZ-YI-AH1" secondAttribute="bottom" id="HJ8-WY-Jsl"/>
                             <constraint firstAttribute="trailing" secondItem="hVZ-YI-AH1" secondAttribute="trailing" id="JnG-Uu-G89"/>
                             <constraint firstItem="Hdg-jh-PcR" firstAttribute="width" secondItem="mEH-X7-xU3" secondAttribute="width" multiplier="0.9" id="Naz-sz-N9O"/>
                             <constraint firstItem="Hdg-jh-PcR" firstAttribute="top" secondItem="1OL-eI-4F5" secondAttribute="top" constant="80" id="RS1-EQ-fOM"/>
+                            <constraint firstItem="aFi-nw-lf9" firstAttribute="top" secondItem="Hdg-jh-PcR" secondAttribute="bottom" constant="40" id="UyG-Ue-PHa"/>
                             <constraint firstItem="hVZ-YI-AH1" firstAttribute="top" secondItem="1OL-eI-4F5" secondAttribute="top" id="f5y-oo-Kse"/>
                             <constraint firstItem="aFi-nw-lf9" firstAttribute="centerX" secondItem="Hdg-jh-PcR" secondAttribute="centerX" id="oYi-yl-hXg"/>
                             <constraint firstItem="hVZ-YI-AH1" firstAttribute="leading" secondItem="1OL-eI-4F5" secondAttribute="leading" id="rBu-lb-Eck"/>
