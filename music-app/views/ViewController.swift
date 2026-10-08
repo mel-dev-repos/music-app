@@ -1,19 +1,25 @@
 
 
 import UIKit
+import SDWebImage
 
-class ViewController: UIViewController,UITextFieldDelegate {
-
+class ViewController: UIViewController,UITextFieldDelegate,MusicManagerDelegate {
+ 
+    var resultsData : [ResultData] = []
+    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var songName: UILabel!
     @IBOutlet weak var searchButton: UIButton!
     @IBOutlet weak var searchTextField: UITextField!
 var musicManager = MusicManager()
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
-        
+        tableView.delegate = self
+        tableView.dataSource = self
         searchTextField.delegate = self
+        musicManager.delegate = self
         searchButton.backgroundColor = .systemPink
         searchButton.setTitle("show me...", for:.normal)
         searchButton.setTitle("Loading...", for: .highlighted)
@@ -25,6 +31,11 @@ var musicManager = MusicManager()
 
     }                                                                              
 
+    func didUpdateMusic(results : [ResultData]) {
+        resultsData = results
+        tableView.reloadData()
+        
+            }
    
     @IBAction func searchPressed(_ sender: UIButton) {
         searchTextField.endEditing(true)
@@ -56,3 +67,32 @@ var musicManager = MusicManager()
 }
 
 
+
+extension ViewController : UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return resultsData.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    
+        let cell = tableView.dequeueReusableCell(withIdentifier: "songCell", for: indexPath)
+        let resultRowPath = resultsData[indexPath.row]
+        cell.textLabel?.text = resultRowPath.title
+        cell.detailTextLabel?.text = resultRowPath.artist
+        let placeholder = UIImage(systemName: "music.note")
+        if let image = resultRowPath.image, let url = URL(string: image) {
+            cell.imageView?.sd_setImage(with: url,placeholderImage: placeholder)
+        }else {
+            cell.imageView?.image = placeholder
+        }
+            
+            return cell
+    }
+    
+  
+}
+
+extension ViewController : UITableViewDelegate{
+    
+}
