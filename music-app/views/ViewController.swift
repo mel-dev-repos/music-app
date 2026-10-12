@@ -3,23 +3,23 @@
 import UIKit
 import SDWebImage
 
-class ViewController: UIViewController,UITextFieldDelegate,MusicManagerDelegate {
+class ViewController: UIViewController,UITextFieldDelegate {
  
-    var resultsData : [ResultData] = []
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var songName: UILabel!
     @IBOutlet weak var searchButton: UIButton!
     @IBOutlet weak var searchTextField: UITextField!
-var musicManager = MusicManager()
 
+var searchViewModel = SearchViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        searchViewModel.onUpdate = {
+            self.tableView.reloadData()
+        }
         tableView.delegate = self
         tableView.dataSource = self
         searchTextField.delegate = self
-        musicManager.delegate = self
         searchButton.backgroundColor = .systemPink
         searchButton.setTitle("show me...", for:.normal)
         searchButton.setTitle("Loading...", for: .highlighted)
@@ -31,11 +31,7 @@ var musicManager = MusicManager()
 
     }                                                                              
 
-    func didUpdateMusic(results : [ResultData]) {
-        resultsData = results
-        tableView.reloadData()
-        
-            }
+  
    
     @IBAction func searchPressed(_ sender: UIButton) {
         searchTextField.endEditing(true)
@@ -58,7 +54,7 @@ var musicManager = MusicManager()
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         if let music = searchTextField.text  {
-            musicManager.fetchMusic(musicName:music)
+            searchViewModel.searchMusic(musicName:music)
         }
  
         
@@ -71,13 +67,13 @@ var musicManager = MusicManager()
 extension ViewController : UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return resultsData.count
+        return searchViewModel.resultsData.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     
         let cell = tableView.dequeueReusableCell(withIdentifier: "songCell", for: indexPath)
-        let resultRowPath = resultsData[indexPath.row]
+        let resultRowPath = searchViewModel.resultsData[indexPath.row]
         cell.textLabel?.text = resultRowPath.title
         cell.detailTextLabel?.text = resultRowPath.artist
         let placeholder = UIImage(systemName: "music.note")

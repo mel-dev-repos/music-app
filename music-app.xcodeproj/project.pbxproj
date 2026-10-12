@@ -35,9 +35,9 @@
 			path = models;
 			sourceTree = "<group>";
 		};
-		8A08ABBA304471330097CA87 /* controles */ = {
+		8A08ABBA304471330097CA87 /* viewModels */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = controles;
+			path = viewModels;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -66,7 +66,7 @@
 		8A16933B30445ED400C6FA27 /* music-app */ = {
 			isa = PBXGroup;
 			children = (
-				8A08ABBA304471330097CA87 /* controles */,
+				8A08ABBA304471330097CA87 /* viewModels */,
 				8A08ABB63044710A0097CA87 /* models */,
 				8A08ABAD30446E880097CA87 /* views */,
 				8A16933130445ED400C6FA27 /* AppDelegate.swift */,
@@ -113,6 +113,7 @@
 			);
 			fileSystemSynchronizedGroups = (
 				8A08ABB63044710A0097CA87 /* models */,
+				8A08ABBA304471330097CA87 /* viewModels */,
 			);
 			name = "music-app";
 			packageProductDependencies = (

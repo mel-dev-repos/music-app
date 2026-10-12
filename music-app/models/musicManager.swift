@@ -10,7 +10,7 @@ nonisolated struct MusicManager {
     var delegate : MusicManagerDelegate?
     
     let musicURL = "https://api.spotify.com/v1/search"
-    let accessToken = "BQDu0XstoP-Sj4oRVavyvnsqij6TBFSEqlgD6Owf2NW0-mRmvxgbD_tyswylTQ_Cxe5XtAR7WlePssYIvK_x-4lK8bRa7njS3nkI48uOpjxyOuJ45HsJdoME3NapyvHUSPAdipT9CzQX"
+    let accessToken = "BQBiiN6LRrpu-FgXCU287Zm8L4K3GaTZS4GtttuIuWIHGG58kYParpU4EBhTsJF0u9gmJSagIn_ZFQCoKWapPCVn7I_nvpj-3UuggXjl2d_bg5Mc69yIbJqf6DqSFAldGkjQ4TTeBX7q"
 
     func fetchMusic(musicName: String) {
         let urlString = "\(musicURL)?query=\(musicName)&type=track&limit=5"
