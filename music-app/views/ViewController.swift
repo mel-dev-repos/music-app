@@ -20,16 +20,12 @@ var searchViewModel = SearchViewModel()
         tableView.delegate = self
         tableView.dataSource = self
         searchTextField.delegate = self
-        searchButton.backgroundColor = .systemPink
-        searchButton.setTitle("show me...", for:.normal)
-        searchButton.setTitle("Loading...", for: .highlighted)
-        searchButton.frame.size.width = 120
-        searchButton.tintColor = .white
+        searchTextField.placeholder = "Artists ,songs"
         searchTextField.layer.cornerRadius = 10
         searchTextField.clipsToBounds = true
-        searchTextField.placeholder = "search a good one:)"
-
-    }                                                                              
+        searchButton.tintColor = .white
+        searchButton.backgroundColor = .accentPink
+    }
 
   
    
