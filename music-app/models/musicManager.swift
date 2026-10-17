@@ -10,11 +10,16 @@ nonisolated struct MusicManager {
     var delegate : MusicManagerDelegate?
     
     let musicURL = "https://api.spotify.com/v1/search"
-    let accessToken = "BQBiiN6LRrpu-FgXCU287Zm8L4K3GaTZS4GtttuIuWIHGG58kYParpU4EBhTsJF0u9gmJSagIn_ZFQCoKWapPCVn7I_nvpj-3UuggXjl2d_bg5Mc69yIbJqf6DqSFAldGkjQ4TTeBX7q"
+    let tokenManager = TokenManager()
+   
 
     func fetchMusic(musicName: String) {
         let urlString = "\(musicURL)?query=\(musicName)&type=track&limit=5"
-        performRequest(address: urlString)
+        tokenManager.fetchToken {
+            self.performRequest(address: urlString)
+
+        }
+        
     }
 
     func performRequest (address:String) {
@@ -23,10 +28,10 @@ nonisolated struct MusicManager {
         // بعدش به اون request ارسال میکنیم با سشن
         // بعد کاری که باید انجام بشه رو ست میکنیم با data task
 
-
+       
         if let url = URL(string: address) {
             var urlRequest = URLRequest(url: url)
-            urlRequest.setValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
+            urlRequest.setValue("Bearer \(tokenManager.token)", forHTTPHeaderField: "Authorization")
         
             let session = URLSession(configuration: .default)
             
@@ -55,7 +60,7 @@ nonisolated struct MusicManager {
     
         do {
            let decodedData = try decoder.decode(MusicData.self, from: musicData)
-           let results = decodedData.tracks.items.map{
+            let results = (decodedData.tracks?.items ?? []).map{
                 let artists = $0.artists.map{
                     let artistName = $0.name
                     return artistName

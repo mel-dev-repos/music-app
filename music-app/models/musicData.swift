@@ -7,7 +7,7 @@
 import Foundation
 
 struct MusicData : Decodable {
-    let tracks : Tracks
+    let tracks : Tracks?
 }
 
 
