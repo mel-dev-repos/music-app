@@ -14,6 +14,7 @@ class ViewController: UIViewController,UISearchBarDelegate, UISearchControllerDe
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupSearch()
         searchViewModel.onUpdate = {
             self.tableView.reloadData()
         }
@@ -22,9 +23,6 @@ class ViewController: UIViewController,UISearchBarDelegate, UISearchControllerDe
         // ارتفاع هر سلول ۱۰۰ باشه
         tableView.rowHeight = 100
         headerImage.frame.size.height = 200
-        searchController.delegate = self
-        searchController.searchBar.delegate = self
-        navigationItem.searchController = searchController
         navigationItem.backButtonTitle = "بازگشت"
         
         creatRightButton()
@@ -104,6 +102,31 @@ extension ViewController : UITableViewDelegate{
         }
     }
     
-}
+    
+    
+    //اضافه کردن همه فیچرهای uisearch
+    func setupSearch() {
+        // وصل کردن به صفحه
+        navigationItem.searchController = searchController
+        searchController.searchBar.delegate = self
 
+        // همیشه دیده شود، حتی موقع اسکرول
+        navigationItem.hidesSearchBarWhenScrolling = false
+
+        // موقع تایپ، صفحه تیره نشود
+        searchController.obscuresBackgroundDuringPresentation = false
+
+        searchController.searchBar.placeholder = "اسم آهنگ یا خواننده"
+//ادیت خودکار و کپتال کردن هم غیرفعال
+        searchController.searchBar.autocapitalizationType = .none
+        searchController.searchBar.autocorrectionType = .no
+
+        searchController.searchBar.returnKeyType = .search
+
+        // دکمه‌های فیلتر زیر سرچ‌بار
+        searchController.searchBar.scopeButtonTitles = ["آهنگ", "خواننده"]
+    }
+
+    
+}
 
