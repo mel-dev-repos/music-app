@@ -8,27 +8,46 @@ class ViewController: UIViewController,UISearchBarDelegate, UISearchControllerDe
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var songName: UILabel!
     @IBOutlet weak var headerImage: UIImageView!
+    @IBOutlet weak var searchBar: UISearchBar!
     
     var searchViewModel = SearchViewModel()
-    let searchController = UISearchController()
     
     override func viewDidLoad() {
+        
+        
+        
         super.viewDidLoad()
+        let tap = UITapGestureRecognizer(target:self, action: #selector(hideKeyboard))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
+        
         setupSearch()
         searchViewModel.onUpdate = {
             self.tableView.reloadData()
         }
+        tableView.keyboardDismissMode = .onDrag
         tableView.dataSource = self
         tableView.delegate = self
         // ارتفاع هر سلول ۱۰۰ باشه
         tableView.rowHeight = 100
         headerImage.frame.size.height = 200
         navigationItem.backButtonTitle = "بازگشت"
-        
+        tableView.register(UINib(nibName: "songCell", bundle: nil), forCellReuseIdentifier: "songCell")
+
         creatRightButton()
-        searchController.hidesNavigationBarDuringPresentation = false
     }
 
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        searchBar.becomeFirstResponder()
+    }
+    
+    @objc func hideKeyboard () {
+        view.endEditing(true)
+    }
+    
+    
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         if let text = searchBar.text , !text.isEmpty {
             searchViewModel.searchMusic(musicName: text)
@@ -53,28 +72,16 @@ extension ViewController : UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
        
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "songCell", for: indexPath)
-        let firstIndexPath = IndexPath(row:0,section: 0)
-        
-        //اولین سلول بک گراندش قرمز باشه
-        if indexPath == firstIndexPath {
-            cell.backgroundColor = .systemRed
+        let cell = tableView.dequeueReusableCell(withIdentifier: "songCell", for: indexPath) as! SongCell
+
+        if indexPath.row == 0 {
+            cell.backgroundColor = UIColor.systemRed.withAlphaComponent(0.15)
         } else {
-            cell.backgroundColor = .white
+            cell.backgroundColor = .systemBackground
         }
- 
-        let resultRowPath = searchViewModel.resultsData[indexPath.row]
-        cell.textLabel?.text = resultRowPath.title
-        cell.detailTextLabel?.text = resultRowPath.artist
-        let placeholder = UIImage(systemName: "music.note")
-        if let image = resultRowPath.image, let url = URL(string: image) {
-            cell.imageView?.sd_setImage(with: url,placeholderImage: placeholder)
-          
-        }else {
-            cell.imageView?.image = placeholder
-        }
-            
-            return cell
+
+        cell.configure(with: searchViewModel.resultsData[indexPath.row])
+        return cell
     }
     
     
@@ -86,8 +93,6 @@ extension ViewController : UITableViewDataSource {
 
 extension ViewController : UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.keyboardDismissMode = .onDrag
-
         tableView.deselectRow(at: indexPath, animated: true)
         performSegue(withIdentifier: "songDetail", sender: indexPath)
         
@@ -107,24 +112,22 @@ extension ViewController : UITableViewDelegate{
     //اضافه کردن همه فیچرهای uisearch
     func setupSearch() {
         // وصل کردن به صفحه
-        navigationItem.searchController = searchController
-        searchController.searchBar.delegate = self
+        searchBar.delegate = self
 
         // همیشه دیده شود، حتی موقع اسکرول
         navigationItem.hidesSearchBarWhenScrolling = false
 
         // موقع تایپ، صفحه تیره نشود
-        searchController.obscuresBackgroundDuringPresentation = false
 
-        searchController.searchBar.placeholder = "اسم آهنگ یا خواننده"
 //ادیت خودکار و کپتال کردن هم غیرفعال
-        searchController.searchBar.autocapitalizationType = .none
-        searchController.searchBar.autocorrectionType = .no
+        searchBar.autocapitalizationType = .none
+        searchBar.autocorrectionType = .no
 
-        searchController.searchBar.returnKeyType = .search
+      searchBar.returnKeyType = .search
 
         // دکمه‌های فیلتر زیر سرچ‌بار
-        searchController.searchBar.scopeButtonTitles = ["آهنگ", "خواننده"]
+        searchBar.showsScopeBar = true
+    searchBar.scopeButtonTitles = ["آهنگ", "خواننده"]
     }
 
     
