@@ -31,7 +31,7 @@ class TokenManager {
         
         
         let client_id = "0e8de25c190d40a69227bb89a1395e30"
-        let client_secret = "0084e8e8f5cf4ed9b0fe0eead2cd44ea"
+        let client_secret = ""
         
         let bodyData = "grant_type=client_credentials&client_id=\(client_id)&client_secret=\(client_secret)"
         
