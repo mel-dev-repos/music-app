@@ -14,6 +14,8 @@ class SearchViewModel : MusicManagerDelegate {
     
     var onUpdate: (() -> Void)?
     
+    var onError : ((String) -> Void)?
+    
     init () {
         musicManager.delegate = self
 
@@ -25,6 +27,11 @@ class SearchViewModel : MusicManagerDelegate {
         resultsData = results
         onUpdate?()
             }
+    
+    func didGetError (error : Error) {
+        onError?(error.localizedDescription)
+        
+    }
     
     func searchMusic (musicName: String) {
         musicManager.fetchMusic(musicName: musicName)

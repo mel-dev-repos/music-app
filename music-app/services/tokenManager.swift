@@ -5,18 +5,18 @@
 //  Created by melina  on 17.10.26.
 //
 import Foundation
-import UIKit
+
 
 class TokenManager {
     var token : String = ""
     
     var expirationDate : Date?
     
-    func fetchToken (completion: @escaping () -> Void )  {
+    func fetchToken (completion: @escaping (Error?) -> Void )  {
         
         
         if let expirationDate = expirationDate , !token.isEmpty , Date () < expirationDate {
-            completion()
+            completion(nil)
            return
 
         }
@@ -42,7 +42,7 @@ class TokenManager {
         let task = session.dataTask(with: request) { data, response, error in
         
             if let error = error {
-                print(error)
+               completion(error)
             }
             else{
                 let decoder = JSONDecoder()
@@ -52,9 +52,9 @@ class TokenManager {
                         let decoder = try decoder.decode(TokenData.self, from: data)
                         self.token = decoder.access_token
                         self.expirationDate = Date().addingTimeInterval(TimeInterval (decoder.expires_in))
-                       completion()
+                       completion(nil)
                     } catch {
-                    print(error)
+                        completion(error)
                     }
                     
                 }

@@ -22,8 +22,14 @@ class ViewController: UIViewController,UISearchBarDelegate, UISearchControllerDe
         view.addGestureRecognizer(tap)
         
         setupSearch()
+        
         searchViewModel.onUpdate = {
             self.tableView.reloadData()
+        }
+        
+        searchViewModel.onError = { errorTxt in
+            self.createErrorAlert(message: errorTxt)
+            
         }
         tableView.keyboardDismissMode = .onDrag
         tableView.dataSource = self
@@ -33,8 +39,10 @@ class ViewController: UIViewController,UISearchBarDelegate, UISearchControllerDe
         headerImage.frame.size.height = 200
         navigationItem.backButtonTitle = "بازگشت"
         tableView.register(UINib(nibName: "songCell", bundle: nil), forCellReuseIdentifier: "songCell")
-
+        setUpNavigationBar()
         creatRightButton()
+        
+        
     }
 
     
@@ -125,9 +133,7 @@ extension ViewController : UITableViewDelegate{
 
       searchBar.returnKeyType = .search
 
-        // دکمه‌های فیلتر زیر سرچ‌بار
-        searchBar.showsScopeBar = true
-    searchBar.scopeButtonTitles = ["آهنگ", "خواننده"]
+   
     }
 
     

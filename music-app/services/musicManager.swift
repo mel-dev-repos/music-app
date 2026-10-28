@@ -3,6 +3,8 @@ import Foundation
 //پس به جای اینکه ViewController برود و جواب را بخواند، باید MusicManager هر وقت جواب آمد خودش به ViewController خبر بدهد
 protocol MusicManagerDelegate  {
     func didUpdateMusic(results : [ResultData])
+    func didGetError(error : Error)
+
 }
 
 nonisolated struct MusicManager {
@@ -15,9 +17,17 @@ nonisolated struct MusicManager {
 
     func fetchMusic(musicName: String) {
         let urlString = "\(musicURL)?query=\(musicName)&type=track&limit=5"
-        tokenManager.fetchToken {
-            self.performRequest(address: urlString)
+        tokenManager.fetchToken() { error in
+            if let fetchError = error {
+                DispatchQueue.main.async {
+                      self.delegate?.didGetError(error: fetchError)
+                  }
+            }
+            else {
+                self.performRequest(address: urlString)
 
+            }
+            
         }
         
     }
@@ -37,8 +47,9 @@ nonisolated struct MusicManager {
             
             let task = session.dataTask(with: urlRequest) { data, response, error in
                 if let error = error {
-                    print(error)
-                    return
+                    DispatchQueue.main.async {
+                          self.delegate?.didGetError(error: error)
+                      }
                 }
                 
                 if let safeData = data {
@@ -72,12 +83,17 @@ nonisolated struct MusicManager {
             }
             DispatchQueue.main.async {
                 self.delegate?.didUpdateMusic(results: results)
+            
 
             }
 
         }
         catch {
-            print(error)
+            DispatchQueue.main.async {
+                self.delegate?.didGetError(error:  error)
+
+            }
+       
         }
     }
 }

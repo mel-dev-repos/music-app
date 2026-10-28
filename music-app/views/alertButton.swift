@@ -34,4 +34,20 @@ extension UIViewController {
 
         present(alert, animated: true)
     }
+    
+    
+    func createErrorAlert (message : String) {
+        
+        let errorAlert = UIAlertController(
+            title : "خطا" ,
+            message : message ,
+            preferredStyle : .alert
+            
+        )
+        let feedBack = UINotificationFeedbackGenerator()
+        feedBack.notificationOccurred(.error)
+        errorAlert.addAction(UIAlertAction(title:"باشه", style: .cancel))
+        errorAlert.view.tintColor = .red
+        present(errorAlert , animated: true)
+    }
 }
