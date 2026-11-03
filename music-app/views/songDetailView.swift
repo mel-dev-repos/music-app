@@ -11,7 +11,6 @@ import UIKit
     
     class SongViewDetail: UIViewController {
 
-
         override func viewDidLoad() {
             super.viewDidLoad()
             creatRightButton()

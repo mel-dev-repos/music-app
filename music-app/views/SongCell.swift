@@ -13,12 +13,16 @@ class SongCell: UITableViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var artistLabel: UILabel!
     
+    
     //فانکشن وقتی که سلول ساخته میشه
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
+        artworkImageView.layer.cornerRadius = 32
+     
         
     }
+   
     func configure(with song: ResultData) {
         titleLabel.text = song.title
         artistLabel.text = song.artist
@@ -26,6 +30,7 @@ class SongCell: UITableViewCell {
         let placeholder = UIImage(systemName: "music.note")
         if let image = song.image, let url = URL(string: image) {
             artworkImageView.sd_setImage(with: url, placeholderImage: placeholder)
+        
         } else {
             artworkImageView.image = placeholder
         }

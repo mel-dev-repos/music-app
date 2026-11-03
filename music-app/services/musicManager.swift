@@ -16,7 +16,7 @@ nonisolated struct MusicManager {
    
 
     func fetchMusic(musicName: String) {
-        let urlString = "\(musicURL)?query=\(musicName)&type=track&limit=5"
+        let urlString = "\(musicURL)?query=\(musicName)&type=track&limit=10"
         tokenManager.fetchToken() { error in
             if let fetchError = error {
                 DispatchQueue.main.async {

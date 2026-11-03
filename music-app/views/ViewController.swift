@@ -5,38 +5,50 @@ import SDWebImage
 
 class ViewController: UIViewController,UISearchBarDelegate, UISearchControllerDelegate {
  
+    
+    @IBOutlet weak var card: UIView!
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var songName: UILabel!
-    @IBOutlet weak var headerImage: UIImageView!
+    @IBOutlet  var headerView: UIView!
     @IBOutlet weak var searchBar: UISearchBar!
+    @IBOutlet weak var topName: UILabel!
+    @IBOutlet weak var singer: UILabel!
     
     var searchViewModel = SearchViewModel()
     
     override func viewDidLoad() {
         
-        
-        
         super.viewDidLoad()
+       
+    
+        
+
+        tableView.tableHeaderView = nil
+        card.backgroundColor = UIColor(named: "customRed")
+        card.layer.cornerRadius = 14
+        card.clipsToBounds = true
+        
         let tap = UITapGestureRecognizer(target:self, action: #selector(hideKeyboard))
         tap.cancelsTouchesInView = false
         view.addGestureRecognizer(tap)
         
         setupSearch()
-        
+        // کلوژر viewModel
         searchViewModel.onUpdate = {
+            
             self.tableView.reloadData()
+            self.topName.text = self.searchViewModel.resultsData.first?.title
+            self.singer.text = self.searchViewModel.resultsData.first?.artist
         }
         
         searchViewModel.onError = { errorTxt in
             self.createErrorAlert(message: errorTxt)
-            
         }
+        
         tableView.keyboardDismissMode = .onDrag
         tableView.dataSource = self
         tableView.delegate = self
         // ارتفاع هر سلول ۱۰۰ باشه
         tableView.rowHeight = 100
-        headerImage.frame.size.height = 200
         navigationItem.backButtonTitle = "بازگشت"
         tableView.register(UINib(nibName: "songCell", bundle: nil), forCellReuseIdentifier: "songCell")
         setUpNavigationBar()
@@ -89,6 +101,8 @@ extension ViewController : UITableViewDataSource {
         }
 
         cell.configure(with: searchViewModel.resultsData[indexPath.row])
+        
+   
         return cell
     }
     
@@ -106,6 +120,23 @@ extension ViewController : UITableViewDelegate{
         
         
         
+        
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        if searchViewModel.resultsData.isEmpty {
+            return nil
+        } else {
+            return headerView
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        if searchViewModel.resultsData.isEmpty {
+            return CGFloat.leastNormalMagnitude
+        }else {
+            return 200
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -130,7 +161,7 @@ extension ViewController : UITableViewDelegate{
 //ادیت خودکار و کپتال کردن هم غیرفعال
         searchBar.autocapitalizationType = .none
         searchBar.autocorrectionType = .no
-
+        searchBar.placeholder = "اسم آهنگ یا خواننده"
       searchBar.returnKeyType = .search
 
    
