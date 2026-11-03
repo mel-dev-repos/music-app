@@ -47,8 +47,6 @@ class ViewController: UIViewController,UISearchBarDelegate, UISearchControllerDe
         tableView.keyboardDismissMode = .onDrag
         tableView.dataSource = self
         tableView.delegate = self
-        // ارتفاع هر سلول ۱۰۰ باشه
-        tableView.rowHeight = 100
         navigationItem.backButtonTitle = "بازگشت"
         tableView.register(UINib(nibName: "songCell", bundle: nil), forCellReuseIdentifier: "songCell")
         setUpNavigationBar()
@@ -118,10 +116,18 @@ extension ViewController : UITableViewDelegate{
         tableView.deselectRow(at: indexPath, animated: true)
         performSegue(withIdentifier: "songDetail", sender: indexPath)
         
-        
-        
+    
         
     }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if indexPath.row == 0 {
+            return 160
+        } else {
+            return 80
+        }
+    }
+    
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         if searchViewModel.resultsData.isEmpty {

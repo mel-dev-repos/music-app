@@ -8,7 +8,7 @@
 import Foundation
 
 class SearchViewModel : MusicManagerDelegate {
-    var resultsData : [ResultData] = []
+    var resultsData : [ResultData]  = []
     
     var musicManager = MusicManager()
     
@@ -24,7 +24,7 @@ class SearchViewModel : MusicManagerDelegate {
   
     
     func didUpdateMusic(results : [ResultData]) {
-        resultsData = results
+        resultsData = results + results
         onUpdate?()
             }
     
