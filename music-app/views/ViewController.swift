@@ -112,17 +112,22 @@ extension ViewController : UITableViewDataSource {
 }
 
 extension ViewController : UITableViewDelegate{
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        performSegue(withIdentifier: "songDetail", sender: indexPath)
-        
     
+        if let detailVC = storyboard?.instantiateViewController(identifier: "SongViewDetail") as? SongViewDetail {
+            detailVC.musicData = searchViewModel.resultsData[indexPath.row]
+            navigationController?.pushViewController(detailVC, animated: true)
+            
+        }
+            
         
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.row == 0 {
-            return 160
+            return 120
         } else {
             return 80
         }
@@ -145,12 +150,7 @@ extension ViewController : UITableViewDelegate{
         }
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "songDetail" {
-            let detailVc = segue.destination as! SongViewDetail
-           
-        }
-    }
+  
     
     
     
