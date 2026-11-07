@@ -20,7 +20,6 @@ struct PreviewManager  {
         var session = URLSession(configuration: .default)
         let task =  session.dataTask(with: urlRequest) { data, response, error in
             if let error = error {
-                self.createErrorAlert(message: error.localizedDescription)
             }
         }
         
