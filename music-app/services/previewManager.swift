@@ -11,15 +11,33 @@ struct PreviewManager  {
     
     
     
-    func fetchPreview (songName : String , singer : String) {
+    func fetchPreview (songName : String , singer : String, completion : @escaping (String?,Error?) -> Void) {
+        let term = "\(singer) \(songName)"
+        guard let encodedTerm = term.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else {
+            completion(nil, nil)
+            return
+        }
+        let urlString = "https://itunes.apple.com/search?term=\(encodedTerm)&entity=song&limit=1"
         
-    let urlString = "https://itunes.apple.com/search?term=\(singer)+\(songName)&entity=song&limit=1"
-        
-        var url = URL(string: urlString)
-        var urlRequest = URLRequest(url: url!)
-        var session = URLSession(configuration: .default)
+        let url = URL(string: urlString)
+        let urlRequest = URLRequest(url: url!)
+        let session = URLSession(configuration: .default)
         let task =  session.dataTask(with: urlRequest) { data, response, error in
             if let error = error {
+                completion(nil,error )
+                return
+            }
+            if let data = data {
+                let decoder = JSONDecoder()
+                do {
+                    let decodedData = try decoder.decode(PreviewData.self, from: data)
+                    completion(decodedData.results.first?.previewUrl , nil)
+                    
+                } catch {
+                    completion( nil , error )
+                }
+                
+                
             }
         }
         

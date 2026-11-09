@@ -17,8 +17,8 @@ class TokenManager {
         
         if let expirationDate = expirationDate , !token.isEmpty , Date () < expirationDate {
             completion(nil)
-           return
-
+            return
+            
         }
         
         
@@ -40,9 +40,9 @@ class TokenManager {
         let session = URLSession(configuration: .default)
         
         let task = session.dataTask(with: request) { data, response, error in
-        
+            
             if let error = error {
-               completion(error)
+                completion(error)
             }
             else{
                 let decoder = JSONDecoder()
@@ -52,7 +52,7 @@ class TokenManager {
                         let decoder = try decoder.decode(TokenData.self, from: data)
                         self.token = decoder.access_token
                         self.expirationDate = Date().addingTimeInterval(TimeInterval (decoder.expires_in))
-                       completion(nil)
+                        completion(nil)
                     } catch {
                         completion(error)
                     }
@@ -61,7 +61,7 @@ class TokenManager {
             }
             
         }
-    
+        
         task.resume()
     }
     

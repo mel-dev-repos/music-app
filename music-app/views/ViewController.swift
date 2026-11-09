@@ -18,10 +18,7 @@ class ViewController: UIViewController,UISearchBarDelegate, UISearchControllerDe
     override func viewDidLoad() {
         
         super.viewDidLoad()
-       
-    
-        
-
+     
         tableView.tableHeaderView = nil
         card.backgroundColor = UIColor(named: "customRed")
         card.layer.cornerRadius = 14
@@ -55,7 +52,7 @@ class ViewController: UIViewController,UISearchBarDelegate, UISearchControllerDe
         
     }
 
-    
+   
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         searchBar.becomeFirstResponder()
