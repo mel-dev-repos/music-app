@@ -114,7 +114,8 @@ extension ViewController : UITableViewDelegate{
         tableView.deselectRow(at: indexPath, animated: true)
     
         if let detailVC = storyboard?.instantiateViewController(identifier: "SongViewDetail") as? SongViewDetail {
-            detailVC.musicData = searchViewModel.resultsData[indexPath.row]
+            detailVC.musicIndex = indexPath.row
+            detailVC.resultData = searchViewModel.resultsData
             navigationController?.pushViewController(detailVC, animated: true)
             
         }

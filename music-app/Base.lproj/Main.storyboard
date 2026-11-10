@@ -131,16 +131,16 @@
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="280" id="xKc-6o-qGE"/>
                                 </constraints>
                             </imageView>
-                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="DB5-eS-6ae">
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="DB5-eS-6ae">
                                 <rect key="frame" x="32" y="478" width="329" height="71"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fNt-h8-xpc">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fNt-h8-xpc">
                                         <rect key="frame" x="124.66666666666666" y="0.0" width="80" height="40.666666666666664"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5uH-Fn-s9w">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5uH-Fn-s9w">
                                         <rect key="frame" x="144" y="50.666666666666629" width="41.333333333333343" height="20.333333333333329"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" name="AccentPink"/>
@@ -148,35 +148,59 @@
                                     </label>
                                 </subviews>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RdN-v7-ade">
-                                <rect key="frame" x="91" y="603" width="199" height="128"/>
-                                <color key="tintColor" name="AccentPink"/>
-                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                <state key="normal" image="play.circle.fill" catalog="system">
-                                    <attributedString key="attributedTitle"/>
-                                </state>
-                                <buttonConfiguration key="configuration" style="plain">
-                                    <imageReference key="image" image="play.circle.fill" catalog="system" symbolScale="large"/>
-                                    <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="60"/>
-                                    <attributedString key="attributedTitle"/>
-                                </buttonConfiguration>
-                                <connections>
-                                    <action selector="playClicked:" destination="0TS-UV-I54" eventType="touchUpInside" id="Qif-GF-DLt"/>
-                                </connections>
-                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="26" translatesAutoresizingMaskIntoConstraints="NO" id="DcL-kh-wrg">
+                                <rect key="frame" x="65" y="585" width="277.66666666666669" height="89.666666666666629"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xUb-Yt-Egz">
+                                        <rect key="frame" x="0.0" y="27.666666666666632" width="56" height="34.333333333333343"/>
+                                        <color key="tintColor" name="customRed"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" image="backward.fill" catalog="system"/>
+                                        <connections>
+                                            <action selector="leftButtonClicked:" destination="0TS-UV-I54" eventType="touchUpInside" id="Rh3-xa-8ZL"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RdN-v7-ade">
+                                        <rect key="frame" x="82" y="0.0" width="113.66666666666669" height="89.666666666666671"/>
+                                        <color key="tintColor" name="AccentPink"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" image="play.circle.fill" catalog="system">
+                                            <attributedString key="attributedTitle"/>
+                                        </state>
+                                        <buttonConfiguration key="configuration" style="plain">
+                                            <imageReference key="image" image="play.circle.fill" catalog="system" symbolScale="large"/>
+                                            <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="60"/>
+                                            <attributedString key="attributedTitle"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="playClicked:" destination="0TS-UV-I54" eventType="touchUpInside" id="Qif-GF-DLt"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UfG-8f-jKJ">
+                                        <rect key="frame" x="221.66666666666669" y="27.666666666666632" width="56" height="34.333333333333343"/>
+                                        <color key="tintColor" name="customRed"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" image="forward.fill" catalog="system">
+                                            <attributedString key="attributedTitle"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="playClicked:" destination="0TS-UV-I54" eventType="touchUpInside" id="YSI-Os-Ymf"/>
+                                            <action selector="rightButtonClicked:" destination="0TS-UV-I54" eventType="touchUpInside" id="6GW-ii-pGy"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="4Ni-OL-xAO"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="RdN-v7-ade" firstAttribute="top" secondItem="DB5-eS-6ae" secondAttribute="bottom" constant="90" id="425-Pz-vN5"/>
                             <constraint firstItem="4Ni-OL-xAO" firstAttribute="trailing" secondItem="DB5-eS-6ae" secondAttribute="trailing" constant="32" id="5j4-BO-ReO"/>
                             <constraint firstItem="DB5-eS-6ae" firstAttribute="top" secondItem="0FA-Cr-qjD" secondAttribute="bottom" constant="40" id="J9f-Mf-oYj"/>
                             <constraint firstItem="DB5-eS-6ae" firstAttribute="leading" secondItem="4Ni-OL-xAO" secondAttribute="leading" constant="32" id="Nw8-7s-GwU"/>
+                            <constraint firstItem="DcL-kh-wrg" firstAttribute="top" secondItem="DB5-eS-6ae" secondAttribute="bottom" constant="36" id="RVw-aL-ilC"/>
                             <constraint firstItem="0FA-Cr-qjD" firstAttribute="centerX" secondItem="zfF-i1-UWV" secondAttribute="centerX" id="RmS-XH-ML6"/>
-                            <constraint firstItem="4Ni-OL-xAO" firstAttribute="bottom" secondItem="RdN-v7-ade" secondAttribute="bottom" constant="90" id="TNh-UT-GAw"/>
-                            <constraint firstItem="RdN-v7-ade" firstAttribute="leading" secondItem="4Ni-OL-xAO" secondAttribute="leading" constant="75" id="WrN-9t-d34"/>
+                            <constraint firstItem="DcL-kh-wrg" firstAttribute="leading" secondItem="4Ni-OL-xAO" secondAttribute="leading" constant="65" id="Ste-Gg-Nr2"/>
                             <constraint firstItem="0FA-Cr-qjD" firstAttribute="top" secondItem="4Ni-OL-xAO" secondAttribute="top" constant="40" id="ar8-EA-9jU"/>
-                            <constraint firstItem="RdN-v7-ade" firstAttribute="centerX" secondItem="DB5-eS-6ae" secondAttribute="centerX" id="poO-4y-cRA"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="detail" id="edM-FW-KP9">
@@ -185,6 +209,7 @@
                     <connections>
                         <outlet property="artistName" destination="5uH-Fn-s9w" id="iQy-aL-oX0"/>
                         <outlet property="musicImage" destination="0FA-Cr-qjD" id="EYa-4I-pwm"/>
+                        <outlet property="playPause" destination="RdN-v7-ade" id="A5L-w2-BEe"/>
                         <outlet property="songName" destination="fNt-h8-xpc" id="W3Q-km-uxR"/>
                     </connections>
                 </viewController>
@@ -212,10 +237,15 @@
         </scene>
     </scenes>
     <resources>
+        <image name="backward.fill" catalog="system" width="128" height="76"/>
+        <image name="forward.fill" catalog="system" width="128" height="76"/>
         <image name="music.pages" catalog="system" width="107" height="128"/>
         <image name="play.circle.fill" catalog="system" width="128" height="123"/>
         <namedColor name="AccentPink">
             <color red="0.83137254901960789" green="0.32549019607843138" blue="0.49411764705882355" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="customRed">
+            <color red="0.44705882352941179" green="0.14117647058823529" blue="0.24313725490196078" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="secondarySystemGroupedBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
