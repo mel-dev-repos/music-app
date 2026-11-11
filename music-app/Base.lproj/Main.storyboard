@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="ZhG-9Z-weJ">
-                                <rect key="frame" x="0.0" y="236" width="393" height="616"/>
+                                <rect key="frame" x="0.0" y="172" width="393" height="548"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <view key="tableHeaderView" contentMode="scaleToFill" id="a1x-OU-HLr">
                                     <rect key="frame" x="0.0" y="0.0" width="393" height="200"/>
@@ -82,7 +82,7 @@
                                 </view>
                             </tableView>
                             <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="Z4R-rO-f4E">
-                                <rect key="frame" x="0.0" y="172" width="393" height="64"/>
+                                <rect key="frame" x="0.0" y="720" width="393" height="64"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
                                     <outlet property="delegate" destination="pDW-XH-jP7" id="BYw-xd-bIK"/>
@@ -90,15 +90,16 @@
                             </searchBar>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="mEH-X7-xU3"/>
+                        <keyboardLayoutGuide key="keyboard" id="jEz-PV-o5n"/>
                         <color key="backgroundColor" systemColor="secondarySystemGroupedBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="ZhG-9Z-weJ" firstAttribute="top" secondItem="Z4R-rO-f4E" secondAttribute="bottom" id="HOD-uM-MU7"/>
+                            <constraint firstItem="ZhG-9Z-weJ" firstAttribute="bottom" secondItem="Z4R-rO-f4E" secondAttribute="top" id="FAt-Qk-r8q"/>
                             <constraint firstAttribute="trailing" secondItem="Z4R-rO-f4E" secondAttribute="trailing" id="NFX-kT-K4p"/>
+                            <constraint firstItem="jEz-PV-o5n" firstAttribute="top" secondItem="Z4R-rO-f4E" secondAttribute="bottom" id="W8x-jS-w99"/>
                             <constraint firstItem="ZhG-9Z-weJ" firstAttribute="leading" secondItem="mEH-X7-xU3" secondAttribute="leading" id="Xqt-Za-DJZ"/>
                             <constraint firstItem="mEH-X7-xU3" firstAttribute="trailing" secondItem="ZhG-9Z-weJ" secondAttribute="trailing" id="amG-Re-A7T"/>
-                            <constraint firstItem="Z4R-rO-f4E" firstAttribute="top" secondItem="mEH-X7-xU3" secondAttribute="top" id="rna-cy-fdn"/>
+                            <constraint firstItem="ZhG-9Z-weJ" firstAttribute="top" secondItem="mEH-X7-xU3" secondAttribute="top" id="reH-wL-jxl"/>
                             <constraint firstItem="Z4R-rO-f4E" firstAttribute="leading" secondItem="mEH-X7-xU3" secondAttribute="leading" id="w7Y-ua-VOp"/>
-                            <constraint firstAttribute="bottom" secondItem="ZhG-9Z-weJ" secondAttribute="bottom" id="xhR-7d-4VO"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="جستجوی آهنگ" largeTitleDisplayMode="always" id="Y60-mU-gdT"/>
@@ -184,7 +185,6 @@
                                             <attributedString key="attributedTitle"/>
                                         </buttonConfiguration>
                                         <connections>
-                                            <action selector="playClicked:" destination="0TS-UV-I54" eventType="touchUpInside" id="YSI-Os-Ymf"/>
                                             <action selector="rightButtonClicked:" destination="0TS-UV-I54" eventType="touchUpInside" id="6GW-ii-pGy"/>
                                         </connections>
                                     </button>
@@ -209,7 +209,7 @@
                     <connections>
                         <outlet property="artistName" destination="5uH-Fn-s9w" id="iQy-aL-oX0"/>
                         <outlet property="musicImage" destination="0FA-Cr-qjD" id="EYa-4I-pwm"/>
-                        <outlet property="playPause" destination="RdN-v7-ade" id="A5L-w2-BEe"/>
+                        <outlet property="playPause" destination="RdN-v7-ade" id="nDF-tD-ieI"/>
                         <outlet property="songName" destination="fNt-h8-xpc" id="W3Q-km-uxR"/>
                     </connections>
                 </viewController>
