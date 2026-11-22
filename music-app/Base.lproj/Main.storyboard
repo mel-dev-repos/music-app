@@ -7,6 +7,7 @@
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -19,7 +20,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="ZhG-9Z-weJ">
-                                <rect key="frame" x="0.0" y="172" width="393" height="548"/>
+                                <rect key="frame" x="0.0" y="292" width="393" height="428"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <view key="tableHeaderView" contentMode="scaleToFill" id="a1x-OU-HLr">
                                     <rect key="frame" x="0.0" y="0.0" width="393" height="200"/>
@@ -88,17 +89,44 @@
                                     <outlet property="delegate" destination="pDW-XH-jP7" id="BYw-xd-bIK"/>
                                 </connections>
                             </searchBar>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="bc5-YV-25B">
+                                <rect key="frame" x="0.0" y="172" width="393" height="120"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="120" id="nrf-Qe-rRn"/>
+                                </constraints>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="12" minimumInteritemSpacing="12" id="zi8-Ob-FRu">
+                                    <size key="itemSize" width="80" height="110"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="16" minY="0.0" maxX="16" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="h2Z-Rt-pGc">
+                                        <rect key="frame" x="16" y="5" width="381" height="110"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="SrV-FI-Vov">
+                                            <rect key="frame" x="0.0" y="0.0" width="381" height="110"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </collectionViewCellContentView>
+                                        <size key="customSize" width="381" height="110"/>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="mEH-X7-xU3"/>
                         <keyboardLayoutGuide key="keyboard" id="jEz-PV-o5n"/>
                         <color key="backgroundColor" systemColor="secondarySystemGroupedBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="mEH-X7-xU3" firstAttribute="trailing" secondItem="bc5-YV-25B" secondAttribute="trailing" id="7Dg-bF-0qa"/>
                             <constraint firstItem="ZhG-9Z-weJ" firstAttribute="bottom" secondItem="Z4R-rO-f4E" secondAttribute="top" id="FAt-Qk-r8q"/>
                             <constraint firstAttribute="trailing" secondItem="Z4R-rO-f4E" secondAttribute="trailing" id="NFX-kT-K4p"/>
                             <constraint firstItem="jEz-PV-o5n" firstAttribute="top" secondItem="Z4R-rO-f4E" secondAttribute="bottom" id="W8x-jS-w99"/>
                             <constraint firstItem="ZhG-9Z-weJ" firstAttribute="leading" secondItem="mEH-X7-xU3" secondAttribute="leading" id="Xqt-Za-DJZ"/>
                             <constraint firstItem="mEH-X7-xU3" firstAttribute="trailing" secondItem="ZhG-9Z-weJ" secondAttribute="trailing" id="amG-Re-A7T"/>
-                            <constraint firstItem="ZhG-9Z-weJ" firstAttribute="top" secondItem="mEH-X7-xU3" secondAttribute="top" id="reH-wL-jxl"/>
+                            <constraint firstItem="ZhG-9Z-weJ" firstAttribute="top" secondItem="bc5-YV-25B" secondAttribute="bottom" id="lbC-e5-ohL"/>
+                            <constraint firstItem="bc5-YV-25B" firstAttribute="leading" secondItem="mEH-X7-xU3" secondAttribute="leading" id="ly5-De-Rj8"/>
+                            <constraint firstItem="bc5-YV-25B" firstAttribute="top" secondItem="mEH-X7-xU3" secondAttribute="top" id="phJ-A0-Aiu"/>
                             <constraint firstItem="Z4R-rO-f4E" firstAttribute="leading" secondItem="mEH-X7-xU3" secondAttribute="leading" id="w7Y-ua-VOp"/>
                         </constraints>
                     </view>
@@ -108,6 +136,7 @@
                         <outlet property="headerView" destination="a1x-OU-HLr" id="nGs-al-YBk"/>
                         <outlet property="searchBar" destination="Z4R-rO-f4E" id="GKi-Gf-OlP"/>
                         <outlet property="singer" destination="dal-kO-Ba6" id="hpj-Va-eAD"/>
+                        <outlet property="singersCollection" destination="bc5-YV-25B" id="0aQ-ft-SrN"/>
                         <outlet property="tableView" destination="ZhG-9Z-weJ" id="Rww-tn-MUD"/>
                         <outlet property="topName" destination="W2M-eD-QCt" id="Ghp-08-SZY"/>
                     </connections>

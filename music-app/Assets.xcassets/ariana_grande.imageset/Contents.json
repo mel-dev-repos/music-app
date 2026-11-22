@@ -1,0 +1,6 @@
+{
+  "images" : [
+    { "filename" : "ariana_grande.jpg", "idiom" : "universal" }
+  ],
+  "info" : { "author" : "xcode", "version" : 1 }
+}

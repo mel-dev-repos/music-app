@@ -1,0 +1,6 @@
+{
+  "images" : [
+    { "filename" : "taylor_swift.jpg", "idiom" : "universal" }
+  ],
+  "info" : { "author" : "xcode", "version" : 1 }
+}
