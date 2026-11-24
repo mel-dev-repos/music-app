@@ -77,7 +77,7 @@ struct MusicManager {
                     return artistName
                 }.joined(separator: ", ")
                 
-                let result = ResultData(title:$0.name, artist:artists, image: $0.album.images.first?.url)
+                let result = ResultData(title:$0.name, artist:artists, image: $0.album.images.first?.url,id:$0.id)
                 return result
                 
             }

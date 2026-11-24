@@ -11,12 +11,18 @@ import AVFoundation
 
 class SongViewDetail: UIViewController {
     
+    @IBOutlet weak var likeButton: UIButton!
     @IBOutlet weak var playPause: UIButton!
+    let favoriteSongs  = FavoriteSongManager()
+    
     var isPlaying = false
     var musicIndex = 0
     var resultData : [ResultData] = []
     var previewManager = PreviewManager()
     let player = AVPlayer()
+    var isFavorite = false
+    
+    
     @IBOutlet weak var musicImage: UIImageView!
     @IBOutlet weak var artistName: UILabel!
     @IBOutlet weak var songName: UILabel!
@@ -30,7 +36,6 @@ class SongViewDetail: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         
         musicImage.layer.cornerRadius = 24
         musicImage.clipsToBounds = true
@@ -48,17 +53,26 @@ class SongViewDetail: UIViewController {
         let name = isPlaying ? "pause.circle.fill" : "play.circle.fill"
         playPause.setImage(UIImage(systemName: name), for: .normal)
     }
+    func updateLikeIcon () {
+        let name = isFavorite ? "heart.fill" : "heart"
+        likeButton.setImage(UIImage(systemName: name), for: .normal)
+    }
     
     func updateUI(with music: ResultData) {
         artistName.text = music.artist
         songName.text = music.title
-        
+        isFavorite = favoriteSongs.isLiked(id: music.id)
         let placeholder = UIImage(systemName: "music.note")
         if let image = music.image, let url = URL(string: image) {
             musicImage.sd_setImage(with: url, placeholderImage: placeholder)
         } else {
             musicImage.image = placeholder
         }
+        
+        
+        updateLikeIcon()
+        
+        
     }
     
     func playPreview(for music: ResultData) {
@@ -77,7 +91,7 @@ class SongViewDetail: UIViewController {
                 self.player.play()
             }
         }
-       
+        
     }
     
     @IBAction func rightButtonClicked(_ sender: UIButton) {
@@ -86,11 +100,12 @@ class SongViewDetail: UIViewController {
         musicIndex += 1
         
         let selectedMusic = resultData[musicIndex]
-        
+        updateLikeIcon()
         updateUI(with: selectedMusic)
         playPreview(for : selectedMusic )
         isPlaying = true
-        updatePlayIcon()
+        
+        
         
         
     }
@@ -101,19 +116,34 @@ class SongViewDetail: UIViewController {
         }
         musicIndex -= 1
         let selectedMusic = resultData[musicIndex]
-        
+        updateLikeIcon()
         updateUI(with:selectedMusic )
         playPreview(for : selectedMusic )
         isPlaying = true
-        updatePlayIcon()
+        
     }
     
+    @IBAction func likeClicked(_ sender: UIButton) {
+        
+        
+        
+        if isFavorite {
+            favoriteSongs.unlike(id: resultData[musicIndex].id)
+        } else {
+            favoriteSongs.like(id: resultData[musicIndex].id)
+        }
+        
+        isFavorite.toggle()
+        
+        updateLikeIcon()
+    }
     
     @IBAction func playClicked(_ sender: UIButton) {
         
+        
         let music = resultData[musicIndex]
-     
-      
+        
+        
         if isPlaying {
             player.pause()
         }

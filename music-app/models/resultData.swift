@@ -9,4 +9,5 @@ struct ResultData {
     let title : String
     let artist : String
     let image : String?
+    let id : String
 }

@@ -20,6 +20,10 @@
 		8A9922903080F18C001C072E /* alertButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A99228F3080F182001C072E /* alertButton.swift */; };
 		8AD30DAD308FE2E700A15D68 /* SongCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD30DAB308FE2E700A15D68 /* SongCell.swift */; };
 		8AD30DAE308FE2E700A15D68 /* songCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8AD30DAC308FE2E700A15D68 /* songCell.xib */; };
+		8ADC1C0130B4867E0084F4A3 /* likesButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADC1C0030B486750084F4A3 /* likesButton.swift */; };
+		8ADC1C0330B488AC0084F4A3 /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADC1C0230B488AC0084F4A3 /* FavoritesViewController.swift */; };
+		8AE6724330B5EC1700CBCD4C /* EmptyStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE6724230B5EC1700CBCD4C /* EmptyStateView.swift */; };
+		8AE6724730B5EE5600CBCD4C /* EmptyStateView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8AE6724630B5EE5600CBCD4C /* EmptyStateView.xib */; };
 		8AEB63B3304DC34F00197634 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8A16933230445ED400C6FA27 /* Assets.xcassets */; };
 		8AED0A283080D3E400CF127F /* songDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AED0A273080D3DA00CF127F /* songDetailView.swift */; };
 /* End PBXBuildFile section */
@@ -39,6 +43,10 @@
 		8A99228F3080F182001C072E /* alertButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = alertButton.swift; sourceTree = "<group>"; };
 		8AD30DAB308FE2E700A15D68 /* SongCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongCell.swift; sourceTree = "<group>"; };
 		8AD30DAC308FE2E700A15D68 /* songCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = songCell.xib; sourceTree = "<group>"; };
+		8ADC1C0030B486750084F4A3 /* likesButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = likesButton.swift; sourceTree = "<group>"; };
+		8ADC1C0230B488AC0084F4A3 /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
+		8AE6724230B5EC1700CBCD4C /* EmptyStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyStateView.swift; sourceTree = "<group>"; };
+		8AE6724630B5EE5600CBCD4C /* EmptyStateView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EmptyStateView.xib; sourceTree = "<group>"; };
 		8AED0A273080D3DA00CF127F /* songDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = songDetailView.swift; sourceTree = "<group>"; };
 		FA6459E8304B6F0A002A966D /* \.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "\\.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -77,6 +85,7 @@
 		8A08ABAD30446E880097CA87 /* views */ = {
 			isa = PBXGroup;
 			children = (
+				8ADC1C0030B486750084F4A3 /* likesButton.swift */,
 				8A622BEB30B376E800104DCD /* CollectionViewCell.swift */,
 				8A622BEC30B376E800104DCD /* CollectionViewCell.xib */,
 				8A8FB444309264A0004FD30E /* navigationBar.swift */,
@@ -85,6 +94,9 @@
 				8A08ABAC30446E880097CA87 /* ViewController.swift */,
 				8AD30DAB308FE2E700A15D68 /* SongCell.swift */,
 				8AD30DAC308FE2E700A15D68 /* songCell.xib */,
+				8ADC1C0230B488AC0084F4A3 /* FavoritesViewController.swift */,
+				8AE6724230B5EC1700CBCD4C /* EmptyStateView.swift */,
+				8AE6724630B5EE5600CBCD4C /* EmptyStateView.xib */,
 			);
 			path = views;
 			sourceTree = "<group>";
@@ -194,6 +206,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8AE6724730B5EE5600CBCD4C /* EmptyStateView.xib in Resources */,
 				8AD30DAE308FE2E700A15D68 /* songCell.xib in Resources */,
 				8A08ABBB304472530097CA87 /* Main.storyboard in Resources */,
 				8A08ABBD304472660097CA87 /* LaunchScreen.storyboard in Resources */,
@@ -210,12 +223,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				8AD30DAD308FE2E700A15D68 /* SongCell.swift in Sources */,
+				8AE6724330B5EC1700CBCD4C /* EmptyStateView.swift in Sources */,
 				8A622BED30B376E800104DCD /* CollectionViewCell.swift in Sources */,
+				8ADC1C0130B4867E0084F4A3 /* likesButton.swift in Sources */,
 				8A08ABBF304472750097CA87 /* AppDelegate.swift in Sources */,
 				8A8FB445309264A7004FD30E /* navigationBar.swift in Sources */,
 				8A08ABAE30446E880097CA87 /* ViewController.swift in Sources */,
 				8A08ABBC3044725F0097CA87 /* SceneDelegate.swift in Sources */,
 				8A9922903080F18C001C072E /* alertButton.swift in Sources */,
+				8ADC1C0330B488AC0084F4A3 /* FavoritesViewController.swift in Sources */,
 				8AED0A283080D3E400CF127F /* songDetailView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -12,7 +12,6 @@ class ViewController: UIViewController,UISearchBarDelegate, UISearchControllerDe
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var topName: UILabel!
     @IBOutlet weak var singer: UILabel!
-    
     @IBOutlet weak var singersCollection: UICollectionView!
     var searchViewModel = SearchViewModel()
     override func viewDidLoad() {
@@ -29,6 +28,7 @@ class ViewController: UIViewController,UISearchBarDelegate, UISearchControllerDe
         view.addGestureRecognizer(tap)
         
         setupSearch()
+        
         // کلوژر viewModel
         searchViewModel.onUpdate = {
             
@@ -47,11 +47,12 @@ class ViewController: UIViewController,UISearchBarDelegate, UISearchControllerDe
         singersCollection.delegate = self
         singersCollection.dataSource = self
         navigationItem.backButtonTitle = "بازگشت"
+      
         tableView.register(UINib(nibName: "songCell", bundle: nil), forCellReuseIdentifier: "songCell")
         singersCollection.register(UINib(nibName: "CollectionViewCell", bundle: nil),forCellWithReuseIdentifier: "singerCell")
         setUpNavigationBar()
         creatRightButton()
-        
+        createLeftButton()
         
     }
     

@@ -20,6 +20,7 @@ struct Tracks : Decodable {
 struct Items : Codable {
     let artists : [Artist]
     let name : String
+    let id : String
     let album : Album
 }
 

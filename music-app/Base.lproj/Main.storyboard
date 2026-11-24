@@ -164,12 +164,28 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="DB5-eS-6ae">
                                 <rect key="frame" x="32" y="478" width="329" height="71"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fNt-h8-xpc">
-                                        <rect key="frame" x="124.66666666666666" y="0.0" width="80" height="40.666666666666664"/>
-                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" alignment="top" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="z0w-M0-n8j">
+                                        <rect key="frame" x="94.333333333333329" y="0.0" width="140.66666666666669" height="40.666666666666664"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wfo-M6-b3q">
+                                                <rect key="frame" x="0.0" y="0.0" width="50.666666666666664" height="34.333333333333336"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" image="heart" catalog="system">
+                                                    <attributedString key="attributedTitle"/>
+                                                    <color key="baseForegroundColor" red="0.5581054688" green="0.1605224609" blue="0.1469726562" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                </buttonConfiguration>
+                                                <connections>
+                                                    <action selector="likeClicked:" destination="0TS-UV-I54" eventType="touchUpInside" id="VLp-Kl-uT6"/>
+                                                </connections>
+                                            </button>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fNt-h8-xpc">
+                                                <rect key="frame" x="60.666666666666671" y="0.0" width="80.000000000000014" height="40.666666666666664"/>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5uH-Fn-s9w">
                                         <rect key="frame" x="144" y="50.666666666666629" width="41.333333333333343" height="20.333333333333329"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -237,6 +253,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="artistName" destination="5uH-Fn-s9w" id="iQy-aL-oX0"/>
+                        <outlet property="likeButton" destination="wfo-M6-b3q" id="KHc-Vo-COs"/>
                         <outlet property="musicImage" destination="0FA-Cr-qjD" id="EYa-4I-pwm"/>
                         <outlet property="playPause" destination="RdN-v7-ade" id="nDF-tD-ieI"/>
                         <outlet property="songName" destination="fNt-h8-xpc" id="W3Q-km-uxR"/>
@@ -245,6 +262,47 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="klJ-cw-5tq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1846.564885496183" y="-223.23943661971833"/>
+        </scene>
+        <!--علاقه مندی ها-->
+        <scene sceneID="Lo1-dE-p0l">
+            <objects>
+                <viewController storyboardIdentifier="FavoritesViewController" title="علاقه مندی ها" id="1Cd-tQ-NL0" customClass="FavoritesViewController" customModule="music_app" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="pBM-u4-IYu">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Jnf-5U-7pZ">
+                                <rect key="frame" x="0.0" y="118" width="393" height="666"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SongCell" id="QFY-Nf-lFE" customClass="SongCell" customModule="music_app" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="50" width="393" height="51"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="QFY-Nf-lFE" id="fxj-46-qgS">
+                                            <rect key="frame" x="0.0" y="0.0" width="393" height="51"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <sections/>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="1E9-VH-Yix"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="1E9-VH-Yix" firstAttribute="bottom" secondItem="Jnf-5U-7pZ" secondAttribute="bottom" id="Din-n6-YbA"/>
+                            <constraint firstItem="Jnf-5U-7pZ" firstAttribute="top" secondItem="1E9-VH-Yix" secondAttribute="top" id="Lbi-oS-EO0"/>
+                            <constraint firstItem="Jnf-5U-7pZ" firstAttribute="leading" secondItem="1E9-VH-Yix" secondAttribute="leading" id="RHk-do-32l"/>
+                            <constraint firstItem="1E9-VH-Yix" firstAttribute="trailing" secondItem="Jnf-5U-7pZ" secondAttribute="trailing" id="mcd-8v-eVQ"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="Jnf-5U-7pZ" id="UvK-Xr-ahQ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ven-Ne-JiJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2843" y="-192"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="eaM-tJ-fBH">
@@ -268,6 +326,7 @@
     <resources>
         <image name="backward.fill" catalog="system" width="128" height="76"/>
         <image name="forward.fill" catalog="system" width="128" height="76"/>
+        <image name="heart" catalog="system" width="128" height="107"/>
         <image name="music.pages" catalog="system" width="107" height="128"/>
         <image name="play.circle.fill" catalog="system" width="128" height="123"/>
         <namedColor name="AccentPink">
