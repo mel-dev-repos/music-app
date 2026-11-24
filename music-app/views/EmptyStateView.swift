@@ -18,7 +18,7 @@ class EmptyStateView: UIView {
     
     func configure (iconImageView : String , titleLabel :String , subtitleLabel : String , buttonTitle : String) {
         
-        image.image = UIImage(named: iconImageView)
+        image.image = UIImage(systemName:  iconImageView)
         title.text = titleLabel
         subtitle.text = subtitleLabel
         button.setTitle(buttonTitle, for: .normal)

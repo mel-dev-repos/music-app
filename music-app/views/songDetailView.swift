@@ -61,7 +61,7 @@ class SongViewDetail: UIViewController {
     func updateUI(with music: ResultData) {
         artistName.text = music.artist
         songName.text = music.title
-        isFavorite = favoriteSongs.isLiked(id: music.id)
+        isFavorite = favoriteSongs.isLiked(item: music)
         let placeholder = UIImage(systemName: "music.note")
         if let image = music.image, let url = URL(string: image) {
             musicImage.sd_setImage(with: url, placeholderImage: placeholder)
@@ -128,9 +128,9 @@ class SongViewDetail: UIViewController {
         
         
         if isFavorite {
-            favoriteSongs.unlike(id: resultData[musicIndex].id)
+            favoriteSongs.unlike(item: resultData[musicIndex])
         } else {
-            favoriteSongs.like(id: resultData[musicIndex].id)
+            favoriteSongs.like(item: resultData[musicIndex])
         }
         
         isFavorite.toggle()
