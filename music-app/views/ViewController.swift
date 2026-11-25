@@ -47,13 +47,13 @@ class ViewController: UIViewController,UISearchBarDelegate, UISearchControllerDe
         singersCollection.delegate = self
         singersCollection.dataSource = self
         navigationItem.backButtonTitle = "بازگشت"
-      
+        
         tableView.register(UINib(nibName: "songCell", bundle: nil), forCellReuseIdentifier: "songCell")
         singersCollection.register(UINib(nibName: "CollectionViewCell", bundle: nil),forCellWithReuseIdentifier: "singerCell")
         setUpNavigationBar()
         creatRightButton()
         createLeftButton()
-        
+        updateEmptyUi()
     }
     
     
@@ -76,7 +76,33 @@ class ViewController: UIViewController,UISearchBarDelegate, UISearchControllerDe
         
     }
     
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchText.isEmpty {
+            updateEmptyUi()
+        }
+        tableView.reloadData()
+    }
     
+    
+    func updateEmptyUi() {
+        let emptyView = Bundle.main.loadNibNamed(
+            "EmptyStateView",
+            owner: nil
+        )?.first as! EmptyStateView
+        
+        emptyView.frame = tableView.bounds
+        
+        emptyView.configure(
+            iconImageView: "music.note",
+            titleLabel: "دنبال موزیک خاصی  هستید؟",
+            subtitleLabel: "با کلیک روی خواننده های بالا یا سرچ در جستجوگر آهنگ مورد علاقتون رو پیدا کنید :)",
+          
+        )
+        
+        
+        
+        tableView.backgroundView = emptyView
+    }
 }
 
 
@@ -89,30 +115,35 @@ extension ViewController : UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        
         let cell = tableView.dequeueReusableCell(withIdentifier: "songCell", for: indexPath) as! SongCell
-        
-        if indexPath.row == 0 {
-            cell.backgroundColor = UIColor.systemRed.withAlphaComponent(0.15)
+        if searchBar.text == nil {
+            updateEmptyUi()
         } else {
-            cell.backgroundColor = .systemBackground
+            
+            
+            if indexPath.row == 0 {
+                cell.backgroundColor = UIColor.systemRed.withAlphaComponent(0.15)
+            } else {
+                cell.backgroundColor = .systemBackground
+            }
+            
+            cell.configure(with: searchViewModel.resultsData[indexPath.row])
+            
+            
+            
         }
-        
-        cell.configure(with: searchViewModel.resultsData[indexPath.row])
-        
-        
         return cell
     }
-    
-    
-    
-    
-    
-    
 }
 
-extension ViewController : UITableViewDelegate{
+
+
+
+
+
+
+
+extension ViewController : UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
@@ -126,6 +157,9 @@ extension ViewController : UITableViewDelegate{
         
         
     }
+    
+    
+    
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.row == 0 {
@@ -178,7 +212,7 @@ extension ViewController : UITableViewDelegate{
     
 }
 
-
+//mark - collection View
 extension ViewController : UICollectionViewDelegate, UICollectionViewDataSource
 {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

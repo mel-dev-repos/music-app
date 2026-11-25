@@ -20,6 +20,9 @@ class FavoritesViewController: UIViewController,UITableViewDelegate, UITableView
         tableView.register(UINib(nibName: "songCell", bundle: nil), forCellReuseIdentifier: "songCell")
         updateUI()
     }
+    override func viewDidAppear(_ animated: Bool) {
+        updateUI()
+    }
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -32,17 +35,27 @@ class FavoritesViewController: UIViewController,UITableViewDelegate, UITableView
         
         
         let song = favoriteSongs.getItems()[indexPath.row]
-
-          cell.configure(with: song)
+        
+        cell.configure(with: song)
         
         return cell
+        
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let detailVC = storyboard?.instantiateViewController(identifier: "SongViewDetail") as? SongViewDetail else {return}
+        
+        detailVC.musicIndex = indexPath.row
+        detailVC.resultData = favoriteSongs.getItems()
+        navigationController?.pushViewController(detailVC, animated: true)
+        
+        
         
     }
     
     
     
     
-  
     func updateUI() {
         
         let songs = favoriteSongs.getItems()

@@ -40,6 +40,7 @@ class SongViewDetail: UIViewController {
         musicImage.layer.cornerRadius = 24
         musicImage.clipsToBounds = true
         creatRightButton()
+    
         
         if musicIndex >= resultData.count {
             return

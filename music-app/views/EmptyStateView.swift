@@ -13,15 +13,22 @@ class EmptyStateView: UIView {
     
     @IBOutlet weak var subtitle: UILabel!
     @IBOutlet weak var title: UILabel!
-    
+    @IBOutlet weak var view: UIView!
     @IBOutlet weak var button: UIButton!
     
-    func configure (iconImageView : String , titleLabel :String , subtitleLabel : String , buttonTitle : String) {
-        
+    func configure (iconImageView : String , titleLabel :String , subtitleLabel : String , buttonTitle : String? = nil) {
+        view.layer.cornerRadius = 48
         image.image = UIImage(systemName:  iconImageView)
         title.text = titleLabel
         subtitle.text = subtitleLabel
-        button.setTitle(buttonTitle, for: .normal)
+        if let buttonTitle   {
+            button.setTitle(buttonTitle, for: .normal)
+            button.isHidden = false
+            button.
+        }else {
+            button.isHidden = true
+        }
+   
         
     }
     
