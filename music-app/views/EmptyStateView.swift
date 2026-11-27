@@ -24,7 +24,6 @@ class EmptyStateView: UIView {
         if let buttonTitle   {
             button.setTitle(buttonTitle, for: .normal)
             button.isHidden = false
-            button.
         }else {
             button.isHidden = true
         }
