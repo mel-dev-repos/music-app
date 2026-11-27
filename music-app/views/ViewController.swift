@@ -35,6 +35,7 @@ class ViewController: UIViewController,UISearchBarDelegate, UISearchControllerDe
             self.tableView.reloadData()
             self.topName.text = self.searchViewModel.resultsData.first?.title
             self.singer.text = self.searchViewModel.resultsData.first?.artist
+            self.updateEmptyUi()
         }
         
         searchViewModel.onError = { errorTxt in
@@ -85,23 +86,33 @@ class ViewController: UIViewController,UISearchBarDelegate, UISearchControllerDe
     
     
     func updateEmptyUi() {
-        let emptyView = Bundle.main.loadNibNamed(
-            "EmptyStateView",
-            owner: nil
-        )?.first as! EmptyStateView
         
-        emptyView.frame = tableView.bounds
+        let songs = searchViewModel.resultsData
         
-        emptyView.configure(
-            iconImageView: "music.note",
-            titleLabel: "دنبال موزیک خاصی  هستید؟",
-            subtitleLabel: "با کلیک روی خواننده های بالا یا سرچ در جستجوگر آهنگ مورد علاقتون رو پیدا کنید :)",
-          
-        )
+        if songs.isEmpty {
+            let emptyView = Bundle.main.loadNibNamed(
+                "EmptyStateView",
+                owner: nil
+            )?.first as! EmptyStateView
+            
+            emptyView.frame = tableView.bounds
+            
+            emptyView.configure(
+                iconImageView: "music.note",
+                titleLabel: "دنبال موزیک خاصی  هستید؟",
+                subtitleLabel: "با کلیک روی خواننده های بالا یا سرچ در جستجوگر آهنگ مورد علاقتون رو پیدا کنید :)",
+                
+            )
+            tableView.backgroundView = emptyView
+            
+        }else {
+            tableView.backgroundView = nil
+        }
         
         
         
-        tableView.backgroundView = emptyView
+        
+        
     }
 }
 
@@ -116,22 +127,20 @@ extension ViewController : UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "songCell", for: indexPath) as! SongCell
-        if searchBar.text == nil {
-            updateEmptyUi()
+        
+        
+        
+        if indexPath.row == 0 {
+            cell.backgroundColor = UIColor.systemRed.withAlphaComponent(0.15)
         } else {
-            
-            
-            if indexPath.row == 0 {
-                cell.backgroundColor = UIColor.systemRed.withAlphaComponent(0.15)
-            } else {
-                cell.backgroundColor = .systemBackground
-            }
-            
-            cell.configure(with: searchViewModel.resultsData[indexPath.row])
-            
-            
-            
+            cell.backgroundColor = .systemBackground
         }
+        
+        cell.configure(with: searchViewModel.resultsData[indexPath.row])
+        
+        
+        
+        
         return cell
     }
 }

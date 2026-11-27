@@ -20,7 +20,8 @@ class FavoritesViewController: UIViewController,UITableViewDelegate, UITableView
         tableView.register(UINib(nibName: "songCell", bundle: nil), forCellReuseIdentifier: "songCell")
         updateUI()
     }
-    override func viewDidAppear(_ animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         updateUI()
     }
     
@@ -53,6 +54,21 @@ class FavoritesViewController: UIViewController,UITableViewDelegate, UITableView
         
     }
     
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let remove = UIContextualAction(style: .destructive, title: "حذف") { action, view, completion in
+            let song = self.favoriteSongs.getItems()[indexPath.row]
+            self.favoriteSongs.unlike(item: song)
+            if self.favoriteSongs.getItems().isEmpty {
+                self.updateUI()
+            }else {
+                tableView.deleteRows(at: [indexPath], with: .automatic)
+                
+            }
+            completion(true)
+        }
+        remove.backgroundColor = .systemRed
+        return UISwipeActionsConfiguration(actions: [remove])
+    }
     
     
     
