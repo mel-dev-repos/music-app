@@ -43,6 +43,11 @@ class FavoritesViewController: UIViewController,UITableViewDelegate, UITableView
         
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 120
+        
+    }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let detailVC = storyboard?.instantiateViewController(identifier: "SongViewDetail") as? SongViewDetail else {return}
         
@@ -55,9 +60,9 @@ class FavoritesViewController: UIViewController,UITableViewDelegate, UITableView
     }
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let remove = UIContextualAction(style: .destructive, title: "حذف") { action, view, completion in
-            let song = self.favoriteSongs.getItems()[indexPath.row]
-            self.favoriteSongs.unlike(item: song)
+        let song = favoriteSongs.getItems()[indexPath.row]
+        
+        let remove = UIContextualAction(style: .destructive, title: nil) { action, view, completion in
             if self.favoriteSongs.getItems().isEmpty {
                 self.updateUI()
             }else {
@@ -66,8 +71,21 @@ class FavoritesViewController: UIViewController,UITableViewDelegate, UITableView
             }
             completion(true)
         }
+        
+        remove.image = UIImage(systemName: "trash")
         remove.backgroundColor = .systemRed
-        return UISwipeActionsConfiguration(actions: [remove])
+        
+        let shareItem = UIContextualAction(style: .normal, title: nil) {action, view, completion in
+            
+            self.share(music: song)
+            
+            completion(true)
+            
+        }
+        shareItem.image = UIImage(systemName: "square.and.arrow.up")
+        shareItem.backgroundColor = .blue
+        
+        return UISwipeActionsConfiguration(actions: [remove,shareItem])
     }
     
     

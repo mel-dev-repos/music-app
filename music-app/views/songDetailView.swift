@@ -13,8 +13,11 @@ class SongViewDetail: UIViewController {
     
     @IBOutlet weak var likeButton: UIButton!
     @IBOutlet weak var playPause: UIButton!
+    
     let favoriteSongs  = FavoriteSongManager()
     
+    @IBOutlet weak var prevButton: UIButton!
+    @IBOutlet weak var nextButton: UIButton!
     var isPlaying = false
     var musicIndex = 0
     var resultData : [ResultData] = []
@@ -31,6 +34,7 @@ class SongViewDetail: UIViewController {
         super.viewWillDisappear(animated)
         player.pause()
         isPlaying = false
+       
         
     }
     
@@ -39,7 +43,7 @@ class SongViewDetail: UIViewController {
         
         musicImage.layer.cornerRadius = 24
         musicImage.clipsToBounds = true
-        creatRightButton()
+        
     
         
         if musicIndex >= resultData.count {
@@ -50,6 +54,23 @@ class SongViewDetail: UIViewController {
         
     }
     
+     
+    func updateNavigationButtons () {
+        if musicIndex == resultData.endIndex - 1 {
+            nextButton.alpha = 0
+            nextButton.isEnabled = false
+        } else {
+            nextButton.alpha = 1
+            nextButton.isEnabled = true
+        }
+        if musicIndex == resultData.startIndex {
+            prevButton.alpha = 0
+            prevButton.isEnabled = false
+        }else {
+            prevButton.alpha = 1
+            prevButton.isEnabled = true
+        }
+    }
     func updatePlayIcon() {
         let name = isPlaying ? "pause.circle.fill" : "play.circle.fill"
         playPause.setImage(UIImage(systemName: name), for: .normal)
@@ -70,7 +91,8 @@ class SongViewDetail: UIViewController {
             musicImage.image = placeholder
         }
         
-        
+        updateNavigationButtons()
+        updatePlayIcon()
         updateLikeIcon()
         
         
@@ -101,8 +123,9 @@ class SongViewDetail: UIViewController {
         musicIndex += 1
         
         let selectedMusic = resultData[musicIndex]
-        updateLikeIcon()
+ 
         updateUI(with: selectedMusic)
+      
         playPreview(for : selectedMusic )
         isPlaying = true
         
@@ -117,7 +140,7 @@ class SongViewDetail: UIViewController {
         }
         musicIndex -= 1
         let selectedMusic = resultData[musicIndex]
-        updateLikeIcon()
+
         updateUI(with:selectedMusic )
         playPreview(for : selectedMusic )
         isPlaying = true

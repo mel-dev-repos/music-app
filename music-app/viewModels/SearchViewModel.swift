@@ -13,6 +13,11 @@ class SearchViewModel : MusicManagerDelegate {
     var musicManager = MusicManager()
     
     let singers : [SingerData] = [
+        SingerData(name: "Siavash Ghomayshi", image: "siavash_ghomayshi"),
+        SingerData(name: "Ebi", image: "ebi"),
+        SingerData(name: "Dariush", image: "dariush"),
+        SingerData(name: "Googoosh", image: "googoosh"),
+        SingerData(name: "Shadmehr Aghili", image: "shadmehr_aghili"),
         SingerData(name: "Taylor Swift", image: "taylor_swift"),
         SingerData(name: "Ed Sheeran", image: "ed_sheeran"),
         SingerData(name: "Adele", image: "adele"),
